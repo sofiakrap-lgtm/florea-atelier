@@ -61,5 +61,34 @@ Filmikuva, luonnonvalo, paperikäärityt kimput. Botaaninen, hieman leikkisä mu
 Demomateriaali valmiina. Pidä visuaalisuus 100 % yllä olevassa identiteetissä.
 
 ## Tiedostot
-- `CLAUDE.md` — tämä brändiohje
-- `index.html` — laskeutumissivun pohja (sivun pohja)
+
+### Runko (vaihda vain nämä, kun sovellat toiseen toimialaan)
+- `site.js` — **keskitetty sisältö**: tuotteet, kategoriat/suodattimet, palvelut,
+  kurssit, yhteystiedot. Tätä muokataan yleensä ainoana.
+- `style.css` — ilme. Brändivärit & fontit `:root`-muuttujissa.
+- `main.js` — logiikka: navi, footer, kori, haku/suodatus, kimpun rakentaja,
+  hintalaskuri, kurssit, galleria, lomakkeet. Renderöi sisällön `site.js`:stä.
+
+### Sivut
+- `index.html` — etusivu / hero
+- `tuotteet.html` — verkkokauppa + suodatus (tilaisuus/tyyli/väri/koko/hinta)
+- `tilaa.html` — kimpun rakentaja + tilauslomake
+- `hintalaskuri.html` — hintalaskuri + tarjouspyyntö
+- `catering.html` — erikoistilaukset (häät/yritys/hautajaiset) + tarjouslomake
+- `palvelut.html` — palvelut / erikoissidonnat
+- `galleria.html` — referenssigalleria + lightbox
+- `tapahtumat.html` — kukkasidontakurssit + ilmoittautuminen
+- `meista.html` — yrityksen tarina & arvot
+- `myymala.html` — toimipiste, aukioloajat, kartta
+- `yhteystiedot.html` — yhteystiedot + lomake + kartta
+
+### Assetit
+- `assets/logos/` — logot (svg)
+- `assets/graphics/` — botaaniset ornamentit (svg)
+- `assets/images/` — valokuvat (jpg)
+
+> Huom: lomakkeet ja kori ovat **demo** — mitään ei lähetetä palvelimelle eikä
+> maksua veloiteta. Kori säilyy selaimen localStoragessa.
+
+### Brändiohje
+- `CLAUDE.md` — tämä tiedosto

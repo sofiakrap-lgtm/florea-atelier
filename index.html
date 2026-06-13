@@ -4,335 +4,129 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Floréa Atelier — Villikukka-ateljee</title>
-  <meta name="description" content="Floréa Atelier — orgaaninen villikukka-ateljee. Paperikäärityt kimput, luonnonvalo, käsityö." />
-
-  <!-- Brändifontit -->
+  <meta name="description" content="Floréa Atelier — orgaaninen villikukka-ateljee Helsingissä. Paperikäärityt kimput, luonnonvalo ja käsityö. Tilaa kukkia, pyydä tarjous tai laske hinta." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ===== Brändin kovat arvot ===== */
-    :root {
-      --almond-cream:  #F0EAD8;
-      --mosswood:      #4B4B30;
-      --cedar-bark:    #6F4128;
-      --golden-fennel: #AFA857;
-      --glacier-mist:  #AEC7E0;
-
-      --font-display: "Instrument Serif", Georgia, serif;
-      --font-body:    "Instrument Sans", system-ui, sans-serif;
-
-      --radius-card: 18px;
-      --radius-pill: 999px;
-
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--almond-cream);
-      color: var(--mosswood);
-      font-family: var(--font-body);
-      font-weight: 400;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-
-    /* ===== Tyypografia ===== */
-    h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.05; }
-    h1 { font-size: clamp(3rem, 8vw, 6.5rem); letter-spacing: -0.01em; }
-    h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
-    h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-
-    .eyebrow {
-      font-family: var(--font-body);
-      text-transform: uppercase;
-      letter-spacing: 0.28em;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--cedar-bark);
-    }
-
-    .lede { font-size: 1.15rem; max-width: 46ch; }
-
-    /* ===== Napit ===== */
-    .btn {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.85em 1.8em;
-      border-radius: var(--radius-pill);
-      text-decoration: none;
-      cursor: pointer;
-      border: 1.5px solid transparent;
-      transition: transform .2s ease, background .2s ease, color .2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn--primary { background: var(--golden-fennel); color: var(--mosswood); }
-    .btn--primary:hover { background: #9c9549; }
-    .btn--ghost { background: transparent; color: var(--mosswood); border-color: var(--mosswood); }
-    .btn--ghost:hover { background: var(--mosswood); color: var(--almond-cream); }
-    .btn--cream { background: var(--almond-cream); color: var(--mosswood); }
-
-    /* ===== Navigaatio ===== */
-    nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(240, 234, 216, 0.86);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(75, 75, 48, 0.12);
-    }
-    nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; }
-    .brand { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo { height: 48px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 30px; align-items: center; }
-    .nav-links a { text-decoration: none; color: var(--mosswood); font-size: 0.92rem; }
-    .nav-links a:hover { color: var(--cedar-bark); }
-    @media (max-width: 720px) { .nav-links a:not(.btn) { display: none; } }
-
-    /* ===== Hero ===== */
-    .hero { padding: 80px 0 70px; position: relative; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
-    @media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } }
-    .hero h1 em { font-style: italic; color: var(--cedar-bark); }
-    .hero-cta { display: flex; gap: 16px; margin-top: 34px; flex-wrap: wrap; }
-    .hero-figure {
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      background:
-        linear-gradient(135deg, rgba(75,75,48,0.10), rgba(174,199,224,0.25)),
-        var(--glacier-mist);
-      position: relative;
-      box-shadow: 0 24px 60px rgba(75, 75, 48, 0.18);
-    }
-    .hero-graphic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 9%; z-index: 1; }
-    .hero-figure .tag {
-      position: absolute; bottom: 16px; left: 16px;
-      background: var(--almond-cream); color: var(--mosswood);
-      padding: 8px 16px; border-radius: var(--radius-pill);
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      z-index: 2;
-    }
-    /* paperirae / filmirae tunnelma kuvapaikalle */
-    .hero-figure::after {
-      content: ""; position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px);
-      background-size: 4px 4px; mix-blend-mode: overlay;
-    }
-    .placeholder-note { position:absolute; top:16px; right:16px; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mosswood); opacity:0.55; }
-
-    /* ===== Botaaninen ornamentti ===== */
-    .botanical { display: block; color: var(--golden-fennel); }
-    .divider { display: flex; justify-content: center; padding: 56px 0; }
-
-    /* ===== Osiot ===== */
-    section { padding: 76px 0; }
-    .section-head { max-width: 620px; margin-bottom: 48px; }
-    .section-head .eyebrow { display: block; margin-bottom: 16px; }
-
-    /* Palvelukortit */
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-    @media (max-width: 820px) { .cards { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff;
-      border-radius: var(--radius-card);
-      padding: 30px 28px 34px;
-      border: 1px solid rgba(75,75,48,0.10);
-    }
-    .card .num { font-family: var(--font-display); font-size: 2.2rem; color: var(--golden-fennel); }
-    .card h3 { margin: 10px 0 12px; }
-    .card p { font-size: 0.98rem; color: rgba(75,75,48,0.85); }
-
-    /* Tumma osio (Mosswood) */
-    .dark { background: var(--mosswood); color: var(--almond-cream); border-radius: 28px; }
-    .dark-inner { padding: 72px 0; }
-    .dark .eyebrow { color: var(--glacier-mist); }
-    .dark h2 em { font-style: italic; color: var(--golden-fennel); }
-    .quote { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.25; max-width: 20ch; }
-    .quote-meta { margin-top: 28px; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; color: var(--glacier-mist); }
-
-    /* Galleria */
-    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    @media (max-width: 880px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-    .gallery figure {
-      border-radius: var(--radius-card); overflow: hidden; aspect-ratio: 3/4; position: relative;
-    }
-    .g1 { background: linear-gradient(160deg, var(--glacier-mist), #cdb89a); }
-    .g2 { background: linear-gradient(160deg, var(--golden-fennel), var(--almond-cream)); }
-    .g3 { background: linear-gradient(160deg, var(--cedar-bark), var(--golden-fennel)); }
-    .g4 { background: linear-gradient(160deg, var(--mosswood), var(--glacier-mist)); }
-    .gallery figure span { position:absolute; bottom:12px; left:12px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--almond-cream); }
-
-    /* CTA-kaista */
-    .cta-band { text-align: center; }
-    .cta-band h2 { max-width: 16ch; margin: 0 auto 24px; }
-    .cta-band em { font-style: italic; color: var(--cedar-bark); }
-
-    /* Footer */
-    footer { background: var(--cedar-bark); color: var(--almond-cream); padding: 64px 0 40px; }
-    .foot-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-    .foot-brand { font-family: var(--font-display); font-size: 2rem; }
-    footer a { color: var(--almond-cream); text-decoration: none; opacity: 0.85; display: block; font-size: 0.92rem; margin-top: 8px; }
-    footer a:hover { opacity: 1; }
-    .foot-col h4 { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; font-weight: 600; font-family: var(--font-body); margin-bottom: 6px; }
-    .foot-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(240,234,216,0.25); font-size: 0.8rem; opacity: 0.8; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header data-nav></header>
 
-  <!-- ===== Navigaatio ===== -->
-  <nav>
-    <div class="wrap">
-      <a class="brand" href="#" aria-label="Floréa Atelier">
-        <img class="brand-logo" src="assets/logos/logo-paa.svg" alt="Floréa Atelier" />
-      </a>
-      <div class="nav-links">
-        <a href="#palvelut">Palvelut</a>
-        <a href="#tarina">Tarina</a>
-        <a href="#galleria">Galleria</a>
-        <a class="btn btn--ghost" href="#yhteys">Varaa kimppu</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ===== Hero ===== -->
-  <header class="hero">
+  <!-- Hero -->
+  <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Villikukka-ateljee · Helsinki</span>
-        <h1 style="margin-top:18px;">Kukkia, jotka<br><em>kasvoivat villinä.</em></h1>
-        <p class="lede" style="margin-top:24px;">
+        <h1>Kukkia, jotka<br><em>kasvoivat villinä.</em></h1>
+        <p class="lede" style="margin-top:22px;">
           Paperikäärityt kimput, luonnonvalo ja kausi sellaisena kuin se on.
           Floréa Atelier kokoaa villit varret editorial-tunnelmaan — käsityönä, ei liukuhihnalta.
         </p>
         <div class="hero-cta">
-          <a class="btn btn--primary" href="#yhteys">Varaa kimppu</a>
-          <a class="btn btn--ghost" href="#palvelut">Tutustu palveluihin</a>
+          <a class="btn btn--primary" href="tilaa.html">Tilaa kukkia</a>
+          <a class="btn btn--ghost" href="catering.html">Pyydä tarjous</a>
+          <a class="btn btn--ghost" href="hintalaskuri.html">Laske hinta</a>
         </div>
       </div>
       <div class="hero-figure">
-        <img class="hero-graphic" src="assets/graphics/grafiikka-paakuva.svg" alt="Floréa Atelier — botaaninen villikukkagrafiikka" />
+        <img src="assets/images/kimppu-04-elegantti.jpg" alt="Villikukkakimppu paperikääreessä" />
         <span class="tag">Kausi · Kesäkuu</span>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- ===== Botaaninen jakaja ===== -->
-  <div class="divider" aria-hidden="true">
-    <svg class="botanical" width="160" height="34" viewBox="0 0 160 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-      <path d="M80 4v26"/>
-      <path d="M80 12c-6-2-9-6-8-11 5 1 8 5 8 11Z"/>
-      <path d="M80 12c6-2 9-6 8-11-5 1-8 5-8 11Z"/>
-      <path d="M80 22c-5 0-8-2-9-6 4-1 8 1 9 6Z"/>
-      <path d="M80 22c5 0 8-2 9-6-4-1-8 1-9 6Z"/>
-      <path d="M0 17h60M100 17h60"/>
-    </svg>
-  </div>
+  <div data-divider></div>
 
-  <!-- ===== Palvelut ===== -->
-  <section id="palvelut">
+  <!-- Esittely -->
+  <section>
+    <div class="wrap split">
+      <div class="rounded-img" style="aspect-ratio:4/5;">
+        <img src="assets/images/myymala.jpg" alt="Floréa Atelierin myymälä" />
+      </div>
+      <div class="stack-lg">
+        <span class="eyebrow">Ateljee</span>
+        <h2>Pieni ateljee, iso rakkaus kauden kukkiin.</h2>
+        <p class="muted">
+          Kokoamme kimput käsin lähituottajien ja luomuviljelijöiden kukista, käärimme ne kierrätyspaperiin
+          ja annamme villien varsien kaartua omaan suuntaansa. Teemme viikon kimppuja, häitä, yritystilaisuuksia
+          ja surusidontaa — sekä opetamme taidon eteenpäin sidontakursseilla.
+        </p>
+        <div class="hero-cta" style="margin-top:8px;">
+          <a class="btn btn--ghost btn--small" href="palvelut.html">Palvelut</a>
+          <a class="btn btn--ghost btn--small" href="meista.html">Meidän tarina</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suosituimmat tuotteet -->
+  <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Mitä teemme</span>
-        <h2>Kolme tapaa tuoda villikukat tilaan.</h2>
+        <span class="eyebrow">Suosituimmat</span>
+        <h2>Kauden kimput.</h2>
       </div>
-      <div class="cards">
-        <article class="card">
-          <div class="num">01</div>
-          <h3>Viikon kimppu</h3>
-          <p>Kauden parhaat varret, paperiin kääritty. Noudettuna ateljeesta tai pyörälähetillä keskustaan.</p>
-        </article>
-        <article class="card">
-          <div class="num">02</div>
-          <h3>Tapahtumat &amp; häät</h3>
-          <p>Editorial-sommittelut juhliin — pöytäasetelmista kaariin. Luonnonvalo ja villi linja edellä.</p>
-        </article>
-        <article class="card">
-          <div class="num">03</div>
-          <h3>Ateljee-workshopit</h3>
-          <p>Pienryhmissä opit sitomaan oman villikimpun. Filmikamera mukaan, jos haluat.</p>
-        </article>
+      <div class="grid grid-3" data-featured="3"></div>
+      <div class="center" style="margin-top:36px;">
+        <a class="btn btn--primary" href="tuotteet.html">Katso kaikki kimput</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== Tarina (tumma osio) ===== -->
-  <section id="tarina">
-    <div class="wrap">
-      <div class="dark">
-        <div class="wrap dark-inner">
-          <span class="eyebrow">Tarina</span>
-          <p class="quote" style="margin-top:18px;">"Emme suorista vartta, joka haluaa <em>kaartua.</em>"</p>
-          <p class="lede" style="margin-top:28px; color:rgba(240,234,216,0.85);">
-            Floréa syntyi halusta antaa villikukkien näyttää siltä, mitä ne ovat — epäsymmetrisiltä,
-            elossa, hieman arvaamattomilta. Jokainen kimppu kootaan käsin, kauden ehdoilla.
-          </p>
-          <p class="quote-meta">— Sofia, ateljeen perustaja</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Galleria ===== -->
-  <section id="galleria">
+  <!-- Erikoistilaukset -->
+  <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Galleria</span>
-        <h2>Studiosta ja kadulta.</h2>
+        <span class="eyebrow">Erikoistilaukset</span>
+        <h2>Suuriin hetkiin.</h2>
       </div>
-      <div class="gallery">
-        <figure class="g1"><span>Paperikääre</span></figure>
-        <figure class="g2"><span>Golden Fennel</span></figure>
-        <figure class="g3"><span>Kausikimppu</span></figure>
-        <figure class="g4"><span>Ateljeen valo</span></figure>
+      <div class="grid grid-4" data-specials></div>
+    </div>
+  </section>
+
+  <!-- Workshopit (teaser) -->
+  <section>
+    <div class="wrap">
+      <div class="dark-band">
+        <div class="wrap dark-inner split">
+          <div class="stack-lg">
+            <span class="eyebrow">Workshopit</span>
+            <h2 style="color:var(--almond-cream);">Sido <em>oma</em> villikimppu.</h2>
+            <p style="color:rgba(240,234,216,0.85);max-width:46ch;">
+              Pienryhmäkursseilla opit kauden kukat ja paperikäärinnän taidon. Filmikamera mukaan, jos haluat.
+            </p>
+            <a class="btn btn--cream" href="tapahtumat.html">Katso tulevat kurssit</a>
+          </div>
+          <div class="rounded-img" style="aspect-ratio:4/3;">
+            <img src="assets/images/workshops.jpg" alt="Kukkasidontakurssi" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA-kaista ===== -->
-  <section id="yhteys" class="cta-band">
-    <div class="wrap">
-      <span class="eyebrow">Varaa</span>
-      <h2 style="margin-top:16px;">Anna kauden <em>kukkia</em> puolestasi.</h2>
-      <p class="lede" style="margin:0 auto 30px;">Kerro tunnelma ja päivä — me kokoamme villin kimpun, joka sopii juuri siihen hetkeen.</p>
-      <a class="btn btn--primary" href="mailto:hei@florea-atelier.demo">Varaa kimppu</a>
+  <!-- Yhteystiedot -->
+  <section>
+    <div class="wrap split">
+      <div class="stack-lg">
+        <span class="eyebrow">Käy ateljeessa</span>
+        <h2>Löydät meidät täältä.</h2>
+        <ul class="contact-list">
+          <li><span class="ico" data-ico="pin"></span><div><strong>Osoite</strong><br>Niittylänpolku 4, 00200 Helsinki</div></li>
+          <li><span class="ico" data-ico="clock"></span><div><strong>Auki</strong><br>Ma–Pe 10–18 · La 10–16 · Su suljettu</div></li>
+          <li><span class="ico" data-ico="mail"></span><div><strong>Yhteys</strong><br><a href="mailto:hei@florea-atelier.demo">hei@florea-atelier.demo</a></div></li>
+        </ul>
+        <a class="btn btn--ghost btn--small" href="yhteystiedot.html">Yhteystiedot & kartta</a>
+      </div>
+      <div class="map-embed">
+        <iframe title="Kartta" src="https://www.openstreetmap.org/export/embed.html?bbox=24.90%2C60.16%2C24.96%2C60.18&layer=mapnik" loading="lazy"></iframe>
+      </div>
     </div>
   </section>
 
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="wrap">
-      <div class="foot-grid">
-        <div>
-          <img src="assets/logos/logo-iso-vaalea.svg" alt="Floréa Atelier" style="height:84px; width:auto; display:block;" />
-          <p style="max-width:32ch; opacity:0.85; margin-top:14px; font-size:0.92rem;">Orgaaninen villikukka-ateljee. Demokonsepti — ei oikea liike.</p>
-        </div>
-        <div class="foot-col">
-          <h4>Ateljee</h4>
-          <a href="#palvelut">Palvelut</a>
-          <a href="#galleria">Galleria</a>
-          <a href="#tarina">Tarina</a>
-        </div>
-        <div class="foot-col">
-          <h4>Yhteys</h4>
-          <a href="mailto:hei@florea-atelier.demo">hei@florea-atelier.demo</a>
-          <a href="#">Instagram</a>
-          <a href="#">Uutiskirje</a>
-        </div>
-      </div>
-      <div class="foot-bottom">
-        <span>© 2026 Floréa Atelier — demomateriaali</span>
-        <span>Almond Cream · Mosswood · Cedar Bark · Golden Fennel · Glacier Mist</span>
-      </div>
-    </div>
-  </footer>
-
+  <footer data-footer></footer>
+  <script src="site.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

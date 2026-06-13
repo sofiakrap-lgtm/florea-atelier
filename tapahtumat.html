@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kurssit & workshopit — Floréa Atelier</title>
+  <meta name="description" content="Floréa Atelierin kukkasidontakurssit ja workshopit. Ilmoittaudu mukaan oppimaan villikimpun salat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header data-nav></header>
+
+  <section class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Kurssit & workshopit</span>
+      <h1>Sido <em>oma</em> villikimppu.</h1>
+      <p class="lede muted">Pienryhmäkursseilla opit kauden kukat, värioppia ja paperikäärinnän taidon. Kaikki materiaalit sisältyvät hintaan.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:12px;">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Tulevat</span><h2>Kalenteri</h2></div>
+      <div class="stack-lg" data-workshops></div>
+    </div>
+  </section>
+
+  <div data-divider></div>
+
+  <!-- Ilmoittautuminen -->
+  <section>
+    <div class="wrap narrow">
+      <div class="section-head center">
+        <span class="eyebrow">Ilmoittaudu</span>
+        <h2>Varaa paikkasi</h2>
+        <p class="muted">Vahvistamme paikan ja maksuohjeet sähköpostitse.</p>
+      </div>
+      <form data-form>
+        <div class="form-grid">
+          <div class="field"><label>Nimi</label><input type="text" required placeholder="Etu- ja sukunimi" /></div>
+          <div class="field"><label>Sähköposti</label><input type="email" required placeholder="sinun@email.fi" /></div>
+          <div class="field"><label>Kurssi</label><select id="wsSelect"></select></div>
+          <div class="field"><label>Osallistujia</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+          <div class="field full"><label>Lisätiedot</label><textarea placeholder="Allergiat, toiveet, lahjakortti…"></textarea></div>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+          <button class="btn btn--primary" type="submit">Ilmoittaudu</button>
+          <span class="form-note">Demo — ilmoittautumista ei oikeasti lähetetä.</span>
+        </div>
+        <div class="form-success" data-success>Kiitos! Ilmoittautumisesi on vastaanotettu (demo). Lähetämme vahvistuksen sähköpostitse. 🌿</div>
+      </form>
+    </div>
+  </section>
+
+  <footer data-footer></footer>
+  <script src="site.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
