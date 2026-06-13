@@ -28,8 +28,6 @@
   }
   const productById = (id) => F.products.find((p) => p.id === id);
 
-  /* botaaninen ornamentti (inline) */
-  const ORNAMENT = `<svg width="150" height="32" viewBox="0 0 160 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M80 4v26"/><path d="M80 12c-6-2-9-6-8-11 5 1 8 5 8 11Z"/><path d="M80 12c6-2 9-6 8-11-5 1-8 5-8 11Z"/><path d="M80 22c-5 0-8-2-9-6 4-1 8 1 9 6Z"/><path d="M80 22c5 0 8-2 9-6-4-1-8 1-9 6Z"/><path d="M0 17h60M100 17h60"/></svg>`;
   const ICON = {
     cart: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>`,
     menu: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`,
@@ -66,8 +64,8 @@
     mount.innerHTML = "";
     mount.appendChild(h("div", { class: "wrap" }, [
       h("a", { href: "index.html", class: "nav-brand", "aria-label": F.site.name }, [
-        h("img", { src: F.site.logoMark, alt: "" }),
-        h("span", { class: "nav-wordmark" }, F.site.name),
+        h("img", { class: "brand-full", src: F.site.logoNav, alt: F.site.name }),
+        h("img", { class: "brand-mark", src: F.site.logoMark, alt: "" }),
       ]),
       linksWrap,
       h("div", { class: "nav-actions" }, [ctaBtn, cartBtn, toggle]),
@@ -114,13 +112,25 @@
     ]));
   }
 
-  /* fill divider mount points */
-  function renderDividers() {
-    $$("[data-divider]").forEach((d) => { d.className = "divider"; d.innerHTML = ORNAMENT; });
-  }
   /* fill inline icons: <span data-ico="pin"></span> */
   function renderIcons() {
     $$("[data-ico]").forEach((el) => { const k = el.getAttribute("data-ico"); if (ICON[k]) el.innerHTML = ICON[k]; });
+  }
+  /* Brändin kukka (orgaaninen, epäsymmetrinen lohkomuoto — logon kukka). fill: currentColor */
+  const BRAND_FLOWER = `<svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="39" cy="31" r="21"/><circle cx="65" cy="35" r="19"/><circle cx="71" cy="58" r="18"/><circle cx="50" cy="69" r="20"/><circle cx="27" cy="55" r="19"/><circle cx="34" cy="76" r="13"/><circle cx="51" cy="49" r="21"/></svg>`;
+  /* fill brand-flower mounts: <span data-flower></span> */
+  function renderFlowers() {
+    $$("[data-flower]").forEach((el) => { el.innerHTML = BRAND_FLOWER; });
+  }
+  /* rullaava brändinauha: <div data-marquee></div> */
+  function renderMarquee() {
+    $$("[data-marquee]").forEach((m) => {
+      const unit = `<span class="mq-item">${F.site.name}</span><span class="mq-sep">${BRAND_FLOWER}</span>`;
+      const seq = unit.repeat(8);
+      m.className = "logo-marquee";
+      m.setAttribute("aria-hidden", "true");
+      m.innerHTML = `<div class="marquee-track">${seq}${seq}</div>`;
+    });
   }
 
   /* ===================================================================
@@ -509,8 +519,9 @@
   document.addEventListener("DOMContentLoaded", function () {
     renderNav();
     renderFooter();
-    renderDividers();
     renderIcons();
+    renderFlowers();
+    renderMarquee();
     updateCartUI();
     initShop();
     initFeatured();

@@ -91,9 +91,10 @@ em { color: var(--cedar-bark); }
   border-bottom: 1px solid var(--line);
 }
 .site-nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; }
-.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--mosswood); }
-.nav-brand img { height: 40px; width: auto; }
-.nav-wordmark { font-family: var(--font-display); font-size: 1.55rem; line-height: 1; letter-spacing: 0.01em; white-space: nowrap; }
+.nav-brand { display: flex; align-items: center; text-decoration: none; color: var(--mosswood); margin-right: 28px; flex-shrink: 0; }
+.nav-brand img { width: auto; }
+.nav-brand .brand-full { height: 34px; display: block; }
+.nav-brand .brand-mark { height: 42px; display: none; }
 .nav-links { display: flex; gap: 22px; align-items: center; }
 .nav-links a { text-decoration: none; font-size: 0.92rem; padding: 4px 0; position: relative; }
 .nav-links a:not(.btn):hover { color: var(--cedar-bark); }
@@ -117,7 +118,8 @@ em { color: var(--cedar-bark); }
   .nav-toggle { display: flex; }
 }
 @media (max-width: 540px) {
-  .nav-wordmark { display: none; }
+  .nav-brand .brand-full { display: none; }
+  .nav-brand .brand-mark { display: block; }
   .site-nav .wrap { padding: 12px 18px; }
   .nav-actions { gap: 10px; }
 }
@@ -199,13 +201,14 @@ section { padding: 72px 0; }
 
 /* Workshop-teaser (reunasta reunaan -kuva) */
 .workshop-teaser { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; overflow: hidden; }
-.workshop-teaser .wt-text { padding: clamp(40px, 5vw, 64px); align-self: center; }
+.workshop-teaser .wt-text { padding: clamp(40px, 5vw, 64px); align-self: start; }
 .workshop-teaser .wt-text h2 { color: var(--almond-cream); }
-.workshop-teaser .wt-media { min-height: 360px; }
-.workshop-teaser .wt-media img { width: 100%; height: 100%; object-fit: cover; }
+/* kuva absoluuttisesti → ei veny luonnolliseen korkeuteensa, vaan täyttää sarakkeen */
+.workshop-teaser .wt-media { position: relative; min-height: 100%; }
+.workshop-teaser .wt-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 820px) {
   .workshop-teaser { grid-template-columns: 1fr; }
-  .workshop-teaser .wt-media { min-height: 260px; order: -1; }
+  .workshop-teaser .wt-media { min-height: 280px; order: -1; }
 }
 
 /* ===== Galleria ===== */
@@ -308,3 +311,46 @@ section { padding: 72px 0; }
 .rounded-img { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow); }
 .rounded-img img { width: 100%; height: 100%; object-fit: cover; }
 .tag-pill { display: inline-block; background: var(--cream-soft); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cedar-bark); }
+
+/* Media-banneri (esim. myymälä) */
+.media-banner { overflow: hidden; }
+.media-banner img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Teräväkulmaiset kuvat — kuvat ja kuvakortit ilman pyöristystä */
+.hero-figure,
+.product-card,
+.product-card .media,
+.gallery-grid figure,
+.rounded-img,
+.workshop-teaser,
+.map-embed,
+.flower-option,
+.media-banner,
+.cart-item img { border-radius: 0; }
+
+/* Pyörivä logo-sinetti (yhteystiedot) */
+.spin-seal { display: flex; justify-content: center; align-items: center; padding: 20px 0 40px; }
+.spin-seal img { width: clamp(150px, 22vw, 220px); height: auto; animation: seal-spin 24s linear infinite; }
+@keyframes seal-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin-seal img { animation: none; } }
+
+/* Rullaava brändinauha (marquee) */
+.logo-marquee { overflow: hidden; width: 100%; padding: 18px 0; background: var(--cream-soft);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.marquee-track { display: inline-flex; align-items: center; gap: 28px; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
+.mq-item { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--mosswood); letter-spacing: 0.01em; }
+.mq-sep { color: var(--golden-fennel); display: inline-flex; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Pieni kukkasymboli (esim. tarinan alla) */
+.flower-mark { color: var(--golden-fennel); margin-top: 6px; line-height: 0; }
+.flower-mark svg { width: 40px; height: 40px; }
+/* Brändikukan koot eri paikoissa */
+.info-card .num svg { width: 34px; height: 34px; display: block; }
+.mq-sep svg { width: 20px; height: 20px; }
+
+/* Display-fontti boldina kaikkialla */
+h1, h2, h3, h4,
+.nav-wordmark, .price, .calc-price, .pc-name, .quote,
+.workshop-date .day, .info-card .num, .mq-item { font-weight: 700; }
