@@ -54,21 +54,23 @@
     const links = F.nav.map((n) =>
       h("a", { href: n.href, class: n.href === here ? "active" : "" }, n.label)
     );
-    links.push(h("a", { href: "tilaa.html", class: "btn btn--ghost btn--small" }, "Tilaa kukkia"));
 
     const linksWrap = h("div", { class: "nav-links", id: "navLinks" }, links);
     const toggle = h("button", { class: "nav-toggle", "aria-label": "Valikko", html: ICON.menu,
       onclick: () => linksWrap.classList.toggle("open") });
     const cartBtn = h("button", { class: "cart-btn", "aria-label": "Ostoskori", html: ICON.cart + `<span class="cart-count" data-cart-count>0</span>`,
       onclick: openCart });
+    const ctaBtn = h("a", { href: "tilaa.html", class: "btn btn--ghost btn--small nav-cta" }, "Tilaa kukkia");
 
     mount.className = "site-nav";
     mount.innerHTML = "";
     mount.appendChild(h("div", { class: "wrap" }, [
-      h("a", { href: "index.html", class: "nav-brand", "aria-label": F.site.name },
-        h("img", { src: F.site.logoMain, alt: F.site.name })),
+      h("a", { href: "index.html", class: "nav-brand", "aria-label": F.site.name }, [
+        h("img", { src: F.site.logoMark, alt: "" }),
+        h("span", { class: "nav-wordmark" }, F.site.name),
+      ]),
       linksWrap,
-      h("div", { class: "nav-actions" }, [cartBtn, toggle]),
+      h("div", { class: "nav-actions" }, [ctaBtn, cartBtn, toggle]),
     ]));
   }
 

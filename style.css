@@ -91,9 +91,10 @@ em { color: var(--cedar-bark); }
   border-bottom: 1px solid var(--line);
 }
 .site-nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; }
-.nav-brand { display: flex; align-items: center; text-decoration: none; }
-.nav-brand img { height: 46px; width: auto; }
-.nav-links { display: flex; gap: 26px; align-items: center; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--mosswood); }
+.nav-brand img { height: 40px; width: auto; }
+.nav-wordmark { font-family: var(--font-display); font-size: 1.55rem; line-height: 1; letter-spacing: 0.01em; white-space: nowrap; }
+.nav-links { display: flex; gap: 22px; align-items: center; }
 .nav-links a { text-decoration: none; font-size: 0.92rem; padding: 4px 0; position: relative; }
 .nav-links a:not(.btn):hover { color: var(--cedar-bark); }
 .nav-links a.active:not(.btn)::after {
@@ -107,12 +108,18 @@ em { color: var(--cedar-bark); }
   border-radius: 999px; display: flex; align-items: center; justify-content: center; padding: 0 5px;
 }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--mosswood); }
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .nav-links { position: fixed; inset: 0 0 0 auto; width: min(80vw, 320px); background: var(--almond-cream);
     flex-direction: column; align-items: flex-start; gap: 18px; padding: 90px 32px; transform: translateX(100%);
     transition: transform .3s ease; box-shadow: var(--shadow); }
   .nav-links.open { transform: translateX(0); }
+  .nav-links a.active:not(.btn)::after { display: none; }
   .nav-toggle { display: flex; }
+}
+@media (max-width: 540px) {
+  .nav-wordmark { display: none; }
+  .site-nav .wrap { padding: 12px 18px; }
+  .nav-actions { gap: 10px; }
 }
 
 /* ===== Botaaninen jakaja ===== */
