@@ -38,6 +38,13 @@
     mail: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>`,
   };
 
+  /* Demobanneri ylälaitaan (kaikille sivuille) */
+  function renderDemoBanner() {
+    if ($(".demo-banner")) return;
+    const bar = h("div", { class: "demo-banner", html: `<strong>DEMOVERSIO</strong> — ${F.site.demoNotice}` });
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+
   /* ===================================================================
      NAVIGAATIO + FOOTER
      =================================================================== */
@@ -607,6 +614,7 @@
      INIT
      =================================================================== */
   document.addEventListener("DOMContentLoaded", function () {
+    renderDemoBanner();
     renderNav();
     renderFooter();
     renderIcons();

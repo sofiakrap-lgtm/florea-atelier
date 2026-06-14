@@ -13,6 +13,7 @@ window.FLOREA = (function () {
   const site = {
     name: "Floréa Atelier",
     tagline: "Villikukka-ateljee · Helsinki",
+    demoNotice: "esimerkki sivustosta, kuvat ja tekstit vaihdetaan asiakkaan omiin.",
     logoNav: LOGO + "logo-paa-wide.svg",
     logoMark: LOGO + "logo-iso-simple.svg",
     logoMain: LOGO + "logo-paa.svg",

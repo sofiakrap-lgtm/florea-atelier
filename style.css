@@ -78,6 +78,10 @@ em { color: var(--cedar-bark); }
 .btn--small { padding: 0.6em 1.2em; font-size: 0.85rem; }
 .btn--block { width: 100%; justify-content: center; }
 
+/* ===== Demobanneri ===== */
+.demo-banner { background: var(--mosswood); color: var(--almond-cream); text-align: center; font-size: 0.8rem; padding: 9px 16px; line-height: 1.4; }
+.demo-banner strong { letter-spacing: 0.12em; font-weight: 600; }
+
 /* ===== Navigaatio ===== */
 .site-nav {
   position: sticky; top: 0; z-index: 100;
