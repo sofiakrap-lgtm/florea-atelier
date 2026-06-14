@@ -367,7 +367,7 @@ section { padding: 72px 0; }
 
 /* Pyörivä logo-sinetti (yhteystiedot) */
 .spin-seal { display: flex; justify-content: center; align-items: center; padding: 20px 0 40px; }
-.spin-seal img { width: clamp(150px, 22vw, 220px); height: auto; animation: seal-spin 24s linear infinite; }
+.spin-seal img { width: clamp(225px, 33vw, 330px); height: auto; animation: seal-spin 24s linear infinite; }
 @keyframes seal-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spin-seal img { animation: none; } }
 
