@@ -188,7 +188,7 @@
     const cart = getCart();
     wrap.innerHTML = "";
     if (!cart.length) {
-      wrap.appendChild(h("div", { class: "cart-empty" }, "Korisi on tyhjä. Lisää villi kimppu! 🌿"));
+      wrap.appendChild(h("div", { class: "cart-empty" }, "Korisi on tyhjä. Lisää villi kimppu!"));
       foot.innerHTML = "";
       return;
     }
