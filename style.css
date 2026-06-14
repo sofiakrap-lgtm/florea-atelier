@@ -53,13 +53,8 @@ h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
 em { color: var(--cedar-bark); }
 
 .eyebrow {
-  font-family: var(--font-body);
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--cedar-bark);
-  display: inline-block;
+  /* Piilotettu kaikkialta: otsikoiden yläpuoliset pikkutekstit pois */
+  display: none;
 }
 .lede { font-size: 1.15rem; max-width: 52ch; }
 .muted { color: rgba(75, 75, 48, 0.72); }
@@ -75,8 +70,8 @@ em { color: var(--cedar-bark); }
   white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); }
-.btn--primary { background: var(--golden-fennel); color: var(--mosswood); }
-.btn--primary:hover { background: #9c9549; }
+.btn--primary { background: var(--mosswood); color: var(--almond-cream); }
+.btn--primary:hover { background: #3a3a26; }
 .btn--ghost { background: transparent; color: var(--mosswood); border-color: var(--mosswood); }
 .btn--ghost:hover { background: var(--mosswood); color: var(--almond-cream); }
 .btn--cream { background: var(--almond-cream); color: var(--mosswood); }
