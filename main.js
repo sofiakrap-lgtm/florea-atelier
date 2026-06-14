@@ -314,8 +314,9 @@
     $$("[data-services]").forEach((grid) => {
       const n = parseInt(grid.getAttribute("data-services")) || F.services.length;
       F.services.slice(0, n).forEach((s) => {
-        grid.appendChild(h("article", { class: "info-card" }, [
-          h("div", { class: "num" }, s.num),
+        grid.appendChild(h("article", { class: "info-card info-card--center" }, [
+          s.icon ? h("img", { class: "svc-icon", src: s.icon, alt: "", loading: "lazy" })
+                 : h("div", { class: "num" }, s.num),
           h("h3", {}, s.title),
           h("p", {}, s.text),
         ]));

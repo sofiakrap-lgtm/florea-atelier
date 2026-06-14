@@ -137,13 +137,14 @@ window.FLOREA = (function () {
   ].map(p => ({ ...p, priceRange: priceBucket(p.price) }));
 
   /* ---------- Palvelut / erikoissidonnat ---------- */
+  const GFX = "assets/graphics/";
   const services = [
-    { num: "01", title: "Viikon kimppu", text: "Kauden parhaat varret paperiin käärittynä. Nouto ateljeesta tai pyörälähetillä keskustaan." },
-    { num: "02", title: "Häät & juhlat", text: "Morsiuskimput, kukkakaaret ja pöytäasetelmat. Suunnittelemme kokonaisuuden tunnelman mukaan." },
-    { num: "03", title: "Yritystilaisuudet", text: "Toistuvat toimistokukat ja tapahtumakoristelut sopimuksella — aina kauden mukaan." },
-    { num: "04", title: "Hautajaiset", text: "Surusidonnat ja muistamiset hienovaraisella kädellä, lyhyelläkin varoitusajalla." },
-    { num: "05", title: "Juhlakoristelut", text: "Synttärit, valmistujaiset ja kausijuhlat — tilan kukitus avaimet käteen." },
-    { num: "06", title: "Sidontakurssit", text: "Pienryhmäworkshopit, joissa opit kokoamaan oman villikimpun." },
+    { num: "01", icon: GFX + "palvelu-viikonkimppu.svg", title: "Viikon kimppu", text: "Kauden parhaat varret paperiin käärittynä. Nouto ateljeesta tai pyörälähetillä keskustaan." },
+    { num: "02", icon: GFX + "palvelu-haat.svg", title: "Häät & juhlat", text: "Morsiuskimput, kukkakaaret ja pöytäasetelmat. Suunnittelemme kokonaisuuden tunnelman mukaan." },
+    { num: "03", icon: GFX + "palvelu-yritys.svg", title: "Yritystilaisuudet", text: "Toistuvat toimistokukat ja tapahtumakoristelut sopimuksella — aina kauden mukaan." },
+    { num: "04", icon: GFX + "palvelu-hautajaiset.svg", title: "Hautajaiset", text: "Surusidonnat ja muistamiset hienovaraisella kädellä, lyhyelläkin varoitusajalla." },
+    { num: "05", icon: GFX + "palvelu-juhlakoristelu.svg", title: "Juhlakoristelut", text: "Synttärit, valmistujaiset ja kausijuhlat — tilan kukitus avaimet käteen." },
+    { num: "06", icon: GFX + "palvelu-sidontakurssit.svg", title: "Sidontakurssit", text: "Pienryhmäworkshopit, joissa opit kokoamaan oman villikimpun." },
   ];
 
   /* ---------- Erikoistilaukset (referenssit) ---------- */

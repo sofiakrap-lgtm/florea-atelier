@@ -158,6 +158,10 @@ section { padding: 72px 0; }
 
 .info-card { background: #fff; border-radius: var(--radius-card); padding: 30px 28px 34px; border: 1px solid var(--line); }
 .info-card .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--cedar-bark); }
+.info-card--center { text-align: center; display: flex; flex-direction: column; align-items: center; }
+/* Palvelugrafiikat tekstin värisiksi (Mosswood) */
+.svc-icon { height: 76px; width: auto; margin-bottom: 14px;
+  filter: brightness(0) saturate(100%) invert(24%) sepia(16%) saturate(700%) hue-rotate(33deg) brightness(94%) contrast(88%); }
 .info-card h3 { margin: 8px 0 10px; }
 .info-card p { font-size: 0.97rem; color: rgba(75,75,48,0.85); }
 
