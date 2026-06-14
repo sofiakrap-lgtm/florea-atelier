@@ -125,7 +125,7 @@
   /* rullaava brändinauha: <div data-marquee></div> */
   function renderMarquee() {
     $$("[data-marquee]").forEach((m) => {
-      const unit = `<span class="mq-item">${F.site.name}</span><span class="mq-sep">${BRAND_FLOWER}</span>`;
+      const unit = `<img class="mq-logo" src="${F.site.logoNav}" alt="" /><span class="mq-sep">${BRAND_FLOWER}</span>`;
       const seq = unit.repeat(8);
       m.className = "logo-marquee";
       m.setAttribute("aria-hidden", "true");

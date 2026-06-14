@@ -90,7 +90,7 @@ em { color: var(--cedar-bark); }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
-.site-nav .wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; }
+.site-nav .wrap { max-width: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; }
 .nav-brand { display: flex; align-items: center; text-decoration: none; color: var(--mosswood); margin-right: 28px; flex-shrink: 0; }
 .nav-brand img { width: auto; }
 .nav-brand .brand-full { height: 34px; display: block; }
@@ -338,7 +338,7 @@ section { padding: 72px 0; }
 .logo-marquee { overflow: hidden; width: 100%; padding: 18px 0; background: var(--cream-soft);
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .marquee-track { display: inline-flex; align-items: center; gap: 28px; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
-.mq-item { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2rem); color: var(--mosswood); letter-spacing: 0.01em; }
+.mq-logo { height: 26px; width: auto; display: block; }
 .mq-sep { color: var(--golden-fennel); display: inline-flex; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
