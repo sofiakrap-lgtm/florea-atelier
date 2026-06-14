@@ -94,12 +94,12 @@ em { color: var(--cedar-bark); }
 .nav-links a { text-decoration: none; font-size: 0.92rem; padding: 4px 0; position: relative; }
 .nav-links a:not(.btn):hover { color: var(--cedar-bark); }
 .nav-links a.active:not(.btn)::after {
-  content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1.5px; background: var(--golden-fennel);
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1.5px; background: var(--cedar-bark);
 }
 .nav-actions { display: flex; align-items: center; gap: 14px; }
 .cart-btn { background: none; border: none; cursor: pointer; position: relative; color: var(--mosswood); display: flex; align-items: center; }
 .cart-count {
-  position: absolute; top: -8px; right: -10px; background: var(--golden-fennel); color: var(--mosswood);
+  position: absolute; top: -8px; right: -10px; background: var(--cedar-bark); color: var(--almond-cream);
   font-family: var(--font-body); font-size: 0.68rem; font-weight: 600; min-width: 18px; height: 18px;
   border-radius: 999px; display: flex; align-items: center; justify-content: center; padding: 0 5px;
 }
@@ -120,7 +120,7 @@ em { color: var(--cedar-bark); }
 }
 
 /* ===== Botaaninen jakaja ===== */
-.divider { display: flex; justify-content: center; padding: 48px 0; color: var(--golden-fennel); }
+.divider { display: flex; justify-content: center; padding: 48px 0; color: var(--cedar-bark); }
 
 /* ===== Osiot ===== */
 section { padding: 72px 0; }
@@ -155,7 +155,7 @@ section { padding: 72px 0; }
 @media (max-width: 600px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
 
 .info-card { background: #fff; border-radius: var(--radius-card); padding: 30px 28px 34px; border: 1px solid var(--line); }
-.info-card .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--golden-fennel); }
+.info-card .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--cedar-bark); }
 .info-card h3 { margin: 8px 0 10px; }
 .info-card p { font-size: 0.97rem; color: rgba(75,75,48,0.85); }
 
@@ -179,7 +179,7 @@ section { padding: 72px 0; }
 .filter-group { margin-bottom: 22px; }
 .filter-group h4 { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.72rem; font-weight: 600; margin-bottom: 10px; color: var(--cedar-bark); }
 .filter-option { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-bottom: 6px; cursor: pointer; }
-.filter-option input { accent-color: var(--golden-fennel); cursor: pointer; }
+.filter-option input { accent-color: var(--cedar-bark); cursor: pointer; }
 .shop-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
 .search-box { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-pill); padding: 8px 16px; flex: 1; min-width: 200px; }
 .search-box input { border: none; background: none; outline: none; font-family: var(--font-body); font-size: 0.92rem; width: 100%; color: var(--mosswood); }
@@ -189,7 +189,7 @@ section { padding: 72px 0; }
 /* ===== Tumma osio ===== */
 .dark-band { background: var(--mosswood); color: var(--almond-cream); border-radius: 28px; }
 .dark-band .eyebrow { color: var(--glacier-mist); }
-.dark-band em { color: var(--golden-fennel); }
+.dark-band em { color: var(--glacier-mist); }
 .dark-inner { padding: 68px 0; }
 .quote { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.9rem); line-height: 1.25; max-width: 22ch; }
 .quote-meta { margin-top: 26px; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.76rem; color: var(--glacier-mist); }
@@ -232,7 +232,7 @@ section { padding: 72px 0; }
   font-family: var(--font-body); font-size: 0.95rem; padding: 12px 14px; border: 1px solid var(--line);
   border-radius: 12px; background: #fff; color: var(--mosswood); outline: none; transition: border .2s ease;
 }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--golden-fennel); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--cedar-bark); }
 .field textarea { resize: vertical; min-height: 110px; }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 .form-note { font-size: 0.82rem; color: rgba(75,75,48,0.6); margin-top: 4px; }
@@ -244,12 +244,12 @@ section { padding: 72px 0; }
 @media (max-width: 880px) { .builder { grid-template-columns: 1fr; } }
 .flower-option { border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; cursor: pointer; background: #fff; transition: border .2s ease, transform .2s ease; position: relative; }
 .flower-option:hover { transform: translateY(-3px); }
-.flower-option.selected { border-color: var(--golden-fennel); box-shadow: 0 0 0 2px var(--golden-fennel); }
+.flower-option.selected { border-color: var(--cedar-bark); box-shadow: 0 0 0 2px var(--cedar-bark); }
 .flower-option .media { aspect-ratio: 1/1; overflow: hidden; }
 .flower-option .media img { width: 100%; height: 100%; object-fit: cover; }
 .flower-option .fo-body { padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .flower-option .fo-name { font-size: 0.9rem; font-weight: 500; }
-.flower-option .check { position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 999px; background: var(--golden-fennel); color: var(--mosswood); display: none; align-items: center; justify-content: center; font-size: 0.85rem; }
+.flower-option .check { position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 999px; background: var(--cedar-bark); color: var(--almond-cream); display: none; align-items: center; justify-content: center; font-size: 0.85rem; }
 .flower-option.selected .check { display: flex; }
 .builder-summary { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-card); padding: 26px; position: sticky; top: 90px; }
 .summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
@@ -285,7 +285,7 @@ section { padding: 72px 0; }
 /* ===== Yhteystieto-rivit ===== */
 .contact-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
 .contact-list li { display: flex; gap: 14px; align-items: flex-start; }
-.contact-list .ico { color: var(--golden-fennel); flex-shrink: 0; margin-top: 2px; }
+.contact-list .ico { color: var(--cedar-bark); flex-shrink: 0; margin-top: 2px; }
 .map-embed { border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16/10; background: var(--glacier-mist); }
 .map-embed iframe { width: 100%; height: 100%; border: 0; }
 
@@ -293,7 +293,8 @@ section { padding: 72px 0; }
 .site-footer { background: var(--cedar-bark); color: var(--almond-cream); padding: 62px 0 36px; margin-top: 40px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-.site-footer img.flogo { height: 120px; width: auto; margin-bottom: 12px; filter: brightness(0) invert(1); }
+.site-footer img.flogo { height: 180px; width: auto; margin-bottom: 12px;
+  filter: brightness(0) invert(94%) sepia(13%) saturate(360%) hue-rotate(3deg) brightness(99%); }
 .site-footer a { color: var(--almond-cream); text-decoration: none; opacity: 0.85; display: block; font-size: 0.92rem; margin-top: 8px; }
 .site-footer a:hover { opacity: 1; }
 .footer-col h4 { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; font-weight: 600; font-family: var(--font-body); margin-bottom: 6px; }
@@ -334,12 +335,12 @@ section { padding: 72px 0; }
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .marquee-track { display: inline-flex; align-items: center; gap: 64px; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
 .mq-logo { height: 26px; width: auto; display: block; }
-.mq-sep { color: var(--golden-fennel); display: inline-flex; }
+.mq-sep { color: var(--cedar-bark); display: inline-flex; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
 /* Pieni kukkasymboli (esim. tarinan alla) */
-.flower-mark { color: var(--golden-fennel); margin-top: 6px; line-height: 0; }
+.flower-mark { color: var(--cedar-bark); margin-top: 6px; line-height: 0; }
 .flower-mark svg { width: 40px; height: 40px; }
 /* Brändikukan koot eri paikoissa */
 .info-card .num svg { width: 34px; height: 34px; display: block; }
