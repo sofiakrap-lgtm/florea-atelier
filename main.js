@@ -334,6 +334,32 @@
   }
 
   /* ===================================================================
+     ASIAKASPALAUTTEET (karuselli)
+     =================================================================== */
+  function initTestimonials() {
+    const mount = $("[data-testimonials]");
+    if (!mount) return;
+    const track = h("div", { class: "tm-track" });
+    F.testimonials.forEach((t) => {
+      track.appendChild(h("figure", { class: "tm-card" }, [
+        h("div", { class: "tm-stars" }, "★".repeat(t.stars)),
+        h("blockquote", { class: "tm-quote" }, `“${t.quote}”`),
+        h("figcaption", { class: "tm-who" }, "— " + t.who),
+      ]));
+    });
+    function scrollBy(dir) {
+      const card = track.querySelector(".tm-card");
+      const step = card ? card.offsetWidth + 24 : 360;
+      track.scrollBy({ left: dir * step, behavior: "smooth" });
+    }
+    const nav = h("div", { class: "tm-nav" }, [
+      h("button", { class: "tm-arrow", "aria-label": "Edellinen", onclick: () => scrollBy(-1) }, "←"),
+      h("button", { class: "tm-arrow", "aria-label": "Seuraava", onclick: () => scrollBy(1) }, "→"),
+    ]);
+    mount.append(track, nav);
+  }
+
+  /* ===================================================================
      KIMPUN RAKENTAJA (tilaa.html)
      =================================================================== */
   function initBuilder() {
@@ -527,6 +553,7 @@
     initFeatured();
     initServices();
     initSpecials();
+    initTestimonials();
     initBuilder();
     initCalculator();
     initWorkshops();

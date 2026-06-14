@@ -202,6 +202,15 @@ window.FLOREA = (function () {
     ]},
   };
 
+  /* ---------- Asiakaspalautteet (karuselli) ---------- */
+  const testimonials = [
+    { stars: 5, quote: "Kaunein kimppu, jonka olemme saaneet. Vieraat kyselivät, mistä se oli.", who: "Anni & Joonas, häät" },
+    { stars: 5, quote: "Palvelu oli rauhallista ja henkilökohtaista. Lopputulos ylitti toiveemme.", who: "Maria, 50-vuotisjuhlat" },
+    { stars: 5, quote: "Juuri sellainen villi ja elävä asetelma kuin toivoin — ei yhtään geneerinen.", who: "Petri, perhejuhla" },
+    { stars: 5, quote: "Tilasin suruksi valkoisen kimpun. Hienovarainen ja kaunis, juuri oikea.", who: "Leena" },
+    { stars: 5, quote: "Toimiston viikkokukat piristävät koko porukkaa. Aina kauden mukaan.", who: "Sofia, yritystilaus" },
+  ];
+
   /* ---------- Meistä ---------- */
   const about = {
     heroImg: IMG + "referenssi-meista.jpg",
@@ -218,5 +227,5 @@ window.FLOREA = (function () {
     ],
   };
 
-  return { site, nav, filters, products, services, specials, workshops, flowers, calc, about, priceBucket };
+  return { site, nav, filters, products, services, specials, workshops, flowers, calc, about, testimonials, priceBucket };
 })();

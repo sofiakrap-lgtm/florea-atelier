@@ -145,6 +145,8 @@ section { padding: 72px 0; }
 .page-header { padding: 64px 0 36px; }
 .page-header .eyebrow { margin-bottom: 14px; }
 .page-header p { margin-top: 16px; }
+.page-header.center .wrap { text-align: center; }
+.page-header.center .lede { margin-left: auto; margin-right: auto; }
 
 /* ===== Kortit (geneerinen ruudukko) ===== */
 .grid { display: grid; gap: 26px; }
@@ -189,7 +191,7 @@ section { padding: 72px 0; }
 /* ===== Tumma osio ===== */
 .dark-band { background: var(--mosswood); color: var(--almond-cream); border-radius: 28px; }
 .dark-band .eyebrow { color: var(--glacier-mist); }
-.dark-band em { color: var(--glacier-mist); }
+.dark-band em { color: inherit; }
 .dark-inner { padding: 68px 0; }
 .quote { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.9rem); line-height: 1.25; max-width: 22ch; }
 .quote-meta { margin-top: 26px; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.76rem; color: var(--glacier-mist); }
@@ -205,6 +207,19 @@ section { padding: 72px 0; }
   .workshop-teaser { grid-template-columns: 1fr; }
   .workshop-teaser .wt-media { min-height: 280px; order: -1; }
 }
+
+/* ===== Asiakaspalautteet (karuselli) ===== */
+.tm-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px; scrollbar-width: none; -ms-overflow-style: none; }
+.tm-track::-webkit-scrollbar { display: none; }
+.tm-card { flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start; border: 1px solid var(--line); background: var(--cream-soft); padding: 40px 36px; display: flex; flex-direction: column; gap: 18px; min-height: 290px; }
+@media (max-width: 900px) { .tm-card { flex-basis: calc(50% - 12px); } }
+@media (max-width: 600px) { .tm-card { flex-basis: 88%; } }
+.tm-stars { color: var(--cedar-bark); letter-spacing: 4px; font-size: 0.9rem; }
+.tm-quote { font-family: var(--font-display); font-weight: 700; font-style: italic; font-size: 1.4rem; line-height: 1.3; color: var(--mosswood); }
+.tm-who { margin-top: auto; color: rgba(75,75,48,0.7); font-size: 0.95rem; }
+.tm-nav { display: flex; justify-content: center; gap: 14px; margin-top: 32px; }
+.tm-arrow { width: 54px; height: 54px; border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 1.2rem; color: var(--mosswood); display: flex; align-items: center; justify-content: center; transition: background .2s ease, color .2s ease; }
+.tm-arrow:hover { background: var(--mosswood); color: var(--almond-cream); }
 
 /* ===== Galleria ===== */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
