@@ -332,7 +332,7 @@ section { padding: 72px 0; }
 /* Rullaava brändinauha (marquee) */
 .logo-marquee { overflow: hidden; width: 100%; padding: 18px 0; background: var(--cream-soft);
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.marquee-track { display: inline-flex; align-items: center; gap: 28px; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
+.marquee-track { display: inline-flex; align-items: center; gap: 64px; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
 .mq-logo { height: 26px; width: auto; display: block; }
 .mq-sep { color: var(--golden-fennel); display: inline-flex; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
