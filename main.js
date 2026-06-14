@@ -137,26 +137,33 @@
      OSTOSKORI (localStorage)
      =================================================================== */
   const CART_KEY = "florea-cart";
-  const getCart = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } };
+  const rowKey = (id, size) => (size ? `${id}|${size}` : id);
+  function getCart() {
+    let raw; try { raw = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
+    return raw.map((r) => ({ id: r.id, qty: r.qty, size: r.size || null, price: r.price ?? null, key: r.key || rowKey(r.id, r.size) }));
+  }
   const setCart = (c) => { localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCartUI(); };
+  const rowPrice = (r) => (r.price != null ? r.price : (productById(r.id)?.price || 0));
 
-  function addToCart(id, qty = 1) {
+  function addToCart(id, opts = {}) {
+    const { qty = 1, size = null, price = null } = opts;
+    const key = rowKey(id, size);
     const cart = getCart();
-    const row = cart.find((r) => r.id === id);
-    if (row) row.qty += qty; else cart.push({ id, qty });
+    const row = cart.find((r) => r.key === key);
+    if (row) row.qty += qty; else cart.push({ key, id, qty, size, price });
     setCart(cart);
     openCart();
   }
-  function changeQty(id, delta) {
+  function changeQty(key, delta) {
     let cart = getCart();
-    const row = cart.find((r) => r.id === id);
+    const row = cart.find((r) => r.key === key);
     if (!row) return;
     row.qty += delta;
-    if (row.qty <= 0) cart = cart.filter((r) => r.id !== id);
+    if (row.qty <= 0) cart = cart.filter((r) => r.key !== key);
     setCart(cart);
   }
-  const removeFromCart = (id) => setCart(getCart().filter((r) => r.id !== id));
-  const cartTotal = () => getCart().reduce((s, r) => s + (productById(r.id)?.price || 0) * r.qty, 0);
+  const removeFromCart = (key) => setCart(getCart().filter((r) => r.key !== key));
+  const cartTotal = () => getCart().reduce((s, r) => s + rowPrice(r) * r.qty, 0);
   const cartCount = () => getCart().reduce((s, r) => s + r.qty, 0);
 
   function ensureCartDrawer() {
@@ -187,20 +194,21 @@
     }
     cart.forEach((r) => {
       const p = productById(r.id); if (!p) return;
+      const unit = rowPrice(r);
       wrap.appendChild(h("div", { class: "cart-item" }, [
         h("img", { src: p.img, alt: p.name }),
         h("div", {}, [
-          h("div", { class: "ci-name" }, p.name),
-          h("div", { class: "ci-price" }, eur(p.price)),
+          h("div", { class: "ci-name" }, p.name + (r.size ? ` · ${r.size}` : "")),
+          h("div", { class: "ci-price" }, eur(unit)),
           h("div", { class: "qty" }, [
-            h("button", { onclick: () => changeQty(p.id, -1), "aria-label": "Vähennä" }, "−"),
+            h("button", { onclick: () => changeQty(r.key, -1), "aria-label": "Vähennä" }, "−"),
             h("span", {}, String(r.qty)),
-            h("button", { onclick: () => changeQty(p.id, 1), "aria-label": "Lisää" }, "+"),
+            h("button", { onclick: () => changeQty(r.key, 1), "aria-label": "Lisää" }, "+"),
           ]),
         ]),
         h("div", { style: "text-align:right" }, [
-          h("div", { class: "price", style: "font-size:1.05rem" }, eur(p.price * r.qty)),
-          h("button", { class: "ci-remove", onclick: () => removeFromCart(p.id) }, "Poista"),
+          h("div", { class: "price", style: "font-size:1.05rem" }, eur(unit * r.qty)),
+          h("button", { class: "ci-remove", onclick: () => removeFromCart(r.key) }, "Poista"),
         ]),
       ]));
     });
@@ -224,10 +232,11 @@
      TUOTERUUDUKKO + SUODATUS (tuotteet.html)
      =================================================================== */
   function productCard(p) {
+    const url = `tuote.html?id=${p.id}`;
     return h("article", { class: "product-card" }, [
-      h("a", { href: `tilaa.html?tuote=${p.id}`, class: "media" }, h("img", { src: p.img, alt: p.name, loading: "lazy" })),
+      h("a", { href: url, class: "media" }, h("img", { src: p.img, alt: p.name, loading: "lazy" })),
       h("div", { class: "body" }, [
-        h("h3", { class: "pc-name" }, p.name),
+        h("a", { href: url, style: "text-decoration:none;" }, h("h3", { class: "pc-name" }, p.name)),
         h("p", { class: "muted", style: "font-size:.9rem" }, p.desc),
         h("div", { class: "pc-tags" }, [
           h("span", { class: "chip" }, F.filters.style.options.find((o) => o.id === p.style)?.label || p.style),
@@ -358,6 +367,65 @@
       h("button", { class: "tm-arrow", "aria-label": "Seuraava", onclick: () => scrollBy(1) }, "→"),
     ]);
     mount.append(track, nav);
+  }
+
+  /* ===================================================================
+     TILAA: valinta valmis vs oma (tilaa.html)
+     =================================================================== */
+  function initTilaaChoice() {
+    const btns = $$("[data-choose]");
+    if (!btns.length) return;
+    const panes = $$("[data-pane]");
+    function show(which) {
+      panes.forEach((p) => { p.style.display = p.getAttribute("data-pane") === which ? "" : "none"; });
+      btns.forEach((b) => b.classList.toggle("active", b.getAttribute("data-choose") === which));
+    }
+    btns.forEach((b) => b.addEventListener("click", () => show(b.getAttribute("data-choose"))));
+    const pre = new URLSearchParams(location.search).get("valitse");
+    show(pre === "oma" ? "oma" : "valmis");
+  }
+
+  /* ===================================================================
+     TUOTESIVU (tuote.html)
+     =================================================================== */
+  function initProduct() {
+    const mount = $("[data-product]");
+    if (!mount) return;
+    const id = new URLSearchParams(location.search).get("id");
+    const p = productById(id);
+    if (!p) { mount.appendChild(h("p", { class: "lede" }, "Tuotetta ei löytynyt.")); return; }
+    document.title = `${p.name} — ${F.site.name}`;
+    const occLabels = p.occasion.map((o) => F.filters.occasion.options.find((x) => x.id === o)?.label || o).join(", ");
+    const sizes = [{ label: "Pieni", d: -10 }, { label: "Keskikokoinen", d: 0 }, { label: "Suuri", d: 20 }];
+    let sel = sizes[1];
+    const priceEl = h("div", { class: "pd-price" });
+    const renderPrice = () => { priceEl.textContent = eur(p.price + sel.d); };
+    const pills = h("div", { class: "option-pills" }, sizes.map((s) =>
+      h("button", { class: "option-pill" + (s === sel ? " active" : ""), type: "button", onclick: (e) => {
+        sel = s; pills.querySelectorAll(".option-pill").forEach((b) => b.classList.remove("active")); e.target.classList.add("active"); renderPrice();
+      } }, s.d ? `${s.label} (${s.d > 0 ? "+" : ""}${s.d} €)` : s.label)));
+    renderPrice();
+    mount.appendChild(h("div", { class: "product-detail" }, [
+      h("div", { class: "pd-media" }, h("img", { src: p.img, alt: p.name })),
+      h("div", { class: "pd-info" }, [
+        h("h1", {}, p.name),
+        priceEl,
+        h("p", { class: "muted" }, p.desc),
+        h("ul", { class: "pd-meta" }, [
+          h("li", {}, [h("span", { class: "lbl" }, "Sopii tilanteeseen"), h("span", {}, occLabels)]),
+          h("li", {}, [h("span", { class: "lbl" }, "Saatavuus"), h("span", {}, "Kausituote — kootaan tilauksesta")]),
+          h("li", {}, [h("span", { class: "lbl" }, "Toimitus"), h("span", {}, "Nouto tai kotiinkuljetus 1–3 pv")]),
+        ]),
+        h("div", { class: "pd-size" }, [h("h4", {}, "Valitse koko"), pills]),
+        h("button", { class: "btn btn--primary", onclick: () => addToCart(p.id, { size: sel.label, price: p.price + sel.d }) }, "Lisää koriin"),
+      ]),
+    ]));
+    const rel = $("[data-related]");
+    if (rel) {
+      let related = F.products.filter((x) => x.id !== p.id && x.occasion.some((o) => p.occasion.includes(o)));
+      const others = F.products.filter((x) => x.id !== p.id && !related.includes(x));
+      related.concat(others).slice(0, 3).forEach((x) => rel.appendChild(productCard(x)));
+    }
   }
 
   /* ===================================================================
@@ -498,15 +566,10 @@
     { img: "assets/images/kimppu-04-elegantti.jpg", cap: "Eleganssi" },
     { img: "assets/images/kimppu-06-haakukat.jpg", cap: "Hääaamu" },
     { img: "assets/images/kimppu-03-varikas.jpg", cap: "Karnevaali" },
-    { img: "assets/images/referenssi-mies.jpg", cap: "Referenssi" },
     { img: "assets/images/kimppu-08-tropiikki.jpg", cap: "Tropiikki" },
     { img: "assets/images/kimppu-05-peltokukat.jpg", cap: "Peltokukat" },
-    { img: "assets/images/myymala.jpg", cap: "Ateljee" },
     { img: "assets/images/kimppu-09-lilja.jpg", cap: "Liljametsä" },
-    { img: "assets/images/pakkaus.jpg", cap: "Paperikääre" },
     { img: "assets/images/kimppu-11-varikas.jpg", cap: "Villi Niitty" },
-    { img: "assets/images/workshops.jpg", cap: "Workshop" },
-    { img: "assets/images/kukka-auto.jpg", cap: "Kukka-auto" },
   ];
   function initGallery() {
     const wrap = $("[data-gallery]");
@@ -555,6 +618,8 @@
     initServices();
     initSpecials();
     initTestimonials();
+    initTilaaChoice();
+    initProduct();
     initBuilder();
     initCalculator();
     initWorkshops();

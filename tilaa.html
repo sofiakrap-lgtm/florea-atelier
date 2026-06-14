@@ -21,8 +21,24 @@
     </div>
   </section>
 
+  <!-- Valinta: valmis vai oma -->
+  <section style="padding-top:8px; padding-bottom:8px;">
+    <div class="wrap">
+      <div class="choice-grid">
+        <button class="choice-btn" type="button" data-choose="valmis">
+          <span class="choice-title">Valmis kimppu</span>
+          <span class="choice-sub">Valitse valmiiksi suunniteltu kauden kimppu ja lisää koriin.</span>
+        </button>
+        <button class="choice-btn" type="button" data-choose="oma">
+          <span class="choice-title">Kokoa oma</span>
+          <span class="choice-sub">Valitse kukkalajit ja rakenna oma villikimppu.</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- Valmiit kimput tuotteina -->
-  <section style="padding-top:12px;">
+  <section style="padding-top:12px;" data-pane="valmis">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Valmiit kimput</span>
@@ -37,7 +53,7 @@
   </section>
 
   <!-- Kokoa oma kimppu -->
-  <section>
+  <section data-pane="oma" style="display:none;">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Kokoa oma</span>

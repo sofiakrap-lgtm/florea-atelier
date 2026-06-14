@@ -258,6 +258,28 @@ section { padding: 72px 0; }
 .form-success { background: var(--glacier-mist); color: var(--mosswood); border-radius: 14px; padding: 18px 20px; margin-top: 18px; display: none; }
 .form-success.show { display: block; }
 
+/* ===== Tilaa: valinta valmis vs oma ===== */
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 700px) { .choice-grid { grid-template-columns: 1fr; } }
+.choice-btn { text-align: left; cursor: pointer; background: #fff; border: 1.5px solid var(--line); padding: 34px 32px; display: flex; flex-direction: column; gap: 10px; font-family: var(--font-body); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.choice-btn:hover { transform: translateY(-3px); }
+.choice-btn.active { border-color: var(--mosswood); background: var(--cream-soft); }
+.choice-title { font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; color: var(--mosswood); line-height: 1; }
+.choice-sub { color: rgba(75,75,48,0.72); font-size: 0.98rem; }
+
+/* ===== Tuotesivu (tuote.html) ===== */
+.product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 820px) { .product-detail { grid-template-columns: 1fr; gap: 28px; } }
+.pd-media { overflow: hidden; aspect-ratio: 4/5; }
+.pd-media img { width: 100%; height: 100%; object-fit: cover; }
+.pd-info h1 { margin-bottom: 8px; }
+.pd-price { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; color: var(--cedar-bark); margin: 6px 0 18px; }
+.pd-meta { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 18px 0; }
+.pd-meta li { display: flex; gap: 10px; font-size: 0.96rem; }
+.pd-meta .lbl { color: rgba(75,75,48,0.6); min-width: 116px; }
+.pd-size { margin: 20px 0; }
+.pd-size h4 { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.72rem; font-weight: 600; color: var(--cedar-bark); margin-bottom: 10px; }
+
 /* ===== Kimpun rakentaja ===== */
 .builder { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: start; }
 @media (max-width: 880px) { .builder { grid-template-columns: 1fr; } }
