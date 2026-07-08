@@ -1,5 +1,5 @@
 /* =====================================================================
-   Floréa Atelier — style.css
+   Floréa Atelier · style.css
    Brändivärit & fontit :root-muuttujissa. Vaihda vain nämä, kun
    sovellat runkoa toiseen toimialaan.
    ===================================================================== */
@@ -382,7 +382,7 @@ section { padding: 72px 0; }
 .media-banner { overflow: hidden; }
 .media-banner img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Teräväkulmaiset kuvat — kuvat ja kuvakortit ilman pyöristystä */
+/* Teräväkulmaiset kuvat, kuvat ja kuvakortit ilman pyöristystä */
 .hero-figure,
 .product-card,
 .product-card .media,

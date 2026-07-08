@@ -1,5 +1,5 @@
 /* =====================================================================
-   Floréa Atelier — main.js
+   Floréa Atelier · main.js
    Geneerinen logiikka: navigaatio, kori, haku/suodatus, lomakkeet,
    kimpun rakentaja, hintalaskuri, galleria. Sisältö tulee site.js:stä.
    Demo: lomakkeet eivät lähetä mihinkään (näyttävät kuittauksen).
@@ -41,7 +41,7 @@
   /* Demobanneri ylälaitaan (kaikille sivuille) */
   function renderDemoBanner() {
     if ($(".demo-banner")) return;
-    const bar = h("div", { class: "demo-banner", html: `<strong>DEMOVERSIO</strong> — ${F.site.demoNotice}` });
+    const bar = h("div", { class: "demo-banner", html: `<strong>DEMOVERSIO</strong> · ${F.site.demoNotice}` });
     document.body.insertBefore(bar, document.body.firstChild);
   }
 
@@ -99,7 +99,7 @@
         h("div", {}, [
           h("img", { class: "flogo", src: F.site.logoLight, alt: F.site.name }),
           h("p", { class: "muted", style: "max-width:34ch;color:rgba(240,234,216,.8);font-size:.92rem" },
-            "Orgaaninen villikukka-ateljee. Demokonsepti — ei oikea liike."),
+            "Orgaaninen villikukka-ateljee. Demokonsepti, ei oikea liike."),
         ]),
         col("Kauppa", [
           { label: "Kukkakimput", href: "tuotteet.html" },
@@ -120,7 +120,7 @@
         ]),
       ]),
       h("div", { class: "footer-bottom" }, [
-        h("span", {}, `© ${new Date().getFullYear()} ${F.site.name} — demomateriaali`),
+        h("span", {}, `© ${new Date().getFullYear()} ${F.site.name} · demomateriaali`),
         h("span", {}, "Almond Cream · Mosswood · Cedar Bark · Golden Fennel · Glacier Mist"),
       ]),
     ]));
@@ -130,7 +130,7 @@
   function renderIcons() {
     $$("[data-ico]").forEach((el) => { const k = el.getAttribute("data-ico"); if (ICON[k]) el.innerHTML = ICON[k]; });
   }
-  /* Brändin kukka (orgaaninen, epäsymmetrinen lohkomuoto — logon kukka). fill: currentColor */
+  /* Brändin kukka (orgaaninen, epäsymmetrinen lohkomuoto, logon kukka). fill: currentColor */
   const BRAND_FLOWER = `<svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="39" cy="31" r="21"/><circle cx="65" cy="35" r="19"/><circle cx="71" cy="58" r="18"/><circle cx="50" cy="69" r="20"/><circle cx="27" cy="55" r="19"/><circle cx="34" cy="76" r="13"/><circle cx="51" cy="49" r="21"/></svg>`;
   /* fill brand-flower mounts: <span data-flower></span> */
   function renderFlowers() {
@@ -233,7 +233,7 @@
         h("span", { class: "price" }, eur(cartTotal())),
       ]),
       h("a", { href: "tilaa.html", class: "btn btn--primary btn--block" }, "Siirry tilaukseen"),
-      h("p", { class: "form-note", style: "text-align:center;margin-top:10px" }, "Demo — maksua ei veloiteta."),
+      h("p", { class: "form-note", style: "text-align:center;margin-top:10px" }, "Demo, maksua ei veloiteta."),
     );
   }
   function updateCartUI() {
@@ -373,7 +373,7 @@
       track.appendChild(h("figure", { class: "tm-card" }, [
         h("div", { class: "tm-stars" }, "★".repeat(t.stars)),
         h("blockquote", { class: "tm-quote" }, `“${t.quote}”`),
-        h("figcaption", { class: "tm-who" }, "— " + t.who),
+        h("figcaption", { class: "tm-who" }, t.who),
       ]));
     });
     function scrollBy(dir) {
@@ -413,7 +413,7 @@
     const id = new URLSearchParams(location.search).get("id");
     const p = productById(id);
     if (!p) { mount.appendChild(h("p", { class: "lede" }, "Tuotetta ei löytynyt.")); return; }
-    document.title = `${p.name} — ${F.site.name}`;
+    document.title = `${p.name} · ${F.site.name}`;
     const occLabels = p.occasion.map((o) => F.filters.occasion.options.find((x) => x.id === o)?.label || o).join(", ");
     const sizes = [{ label: "Pieni", d: -10 }, { label: "Keskikokoinen", d: 0 }, { label: "Suuri", d: 20 }];
     let sel = sizes[1];
@@ -432,7 +432,7 @@
         h("p", { class: "muted" }, p.desc),
         h("ul", { class: "pd-meta" }, [
           h("li", {}, [h("span", { class: "lbl" }, "Sopii tilanteeseen"), h("span", {}, occLabels)]),
-          h("li", {}, [h("span", { class: "lbl" }, "Saatavuus"), h("span", {}, "Kausituote — kootaan tilauksesta")]),
+          h("li", {}, [h("span", { class: "lbl" }, "Saatavuus"), h("span", {}, "Kausituote, kootaan tilauksesta")]),
           h("li", {}, [h("span", { class: "lbl" }, "Toimitus"), h("span", {}, "Nouto tai kotiinkuljetus 1–3 pv")]),
         ]),
         h("div", { class: "pd-size" }, [h("h4", {}, "Valitse koko"), pills]),
@@ -491,7 +491,7 @@
         h("span", { class: "muted" }, "Yhteensä"), h("span", { class: "price" }, eur(total))]));
       summaryBody.appendChild(h("button", { class: "btn btn--primary btn--block", style: "margin-top:16px",
         disabled: chosen.length ? null : "disabled",
-        onclick: () => { alert(`Kiitos! Oma kimppusi (${chosen.map((c) => c.name).join(", ")}) — ${eur(total)}. Demo: tilausta ei lähetetty.`); }
+        onclick: () => { alert(`Kiitos! Oma kimppusi (${chosen.map((c) => c.name).join(", ")}), ${eur(total)}. Demo: tilausta ei lähetetty.`); }
       }, "Tilaa oma kimppu"));
     }
     renderSummary();
@@ -526,7 +526,7 @@
           }}, group.multi ? `${o.label} +${o.value} €` : o.label));
       return h("div", { class: "field" }, [h("label", {}, group.label), h("div", { class: "option-pills" }, pills)]);
     }
-    const priceEl = h("div", { class: "calc-price" }, "—");
+    const priceEl = h("div", { class: "calc-price" }, "");
     function calc() {
       let total = c.base;
       total *= c.occasion.options.find((o) => o.id === state.occasion).value;
@@ -575,7 +575,7 @@
     });
     // täytä ilmoittautumislomakkeen valikko
     const sel = $("#wsSelect");
-    if (sel) F.workshops.forEach((w) => sel.appendChild(h("option", { value: w.title }, `${w.day}.${w.mon} — ${w.title}`)));
+    if (sel) F.workshops.forEach((w) => sel.appendChild(h("option", { value: w.title }, `${w.day}.${w.mon} · ${w.title}`)));
   }
 
   /* ===================================================================
