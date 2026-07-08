@@ -1,5 +1,5 @@
 /* =====================================================================
-   Floréa Atelier — site.js
+   Floréa Atelier · site.js
    KESKITETTY SISÄLTÖ. Tämä on ainoa tiedosto, jota tavallisesti
    muokataan: tuotteet, kategoriat, kurssit, tekstit, yhteystiedot.
    main.js renderöi nämä sivuille. style.css hoitaa ilmeen.
@@ -86,10 +86,10 @@ window.FLOREA = (function () {
 
   /* ---------- Tuotteet (kukkakimput) ----------
      Muokkaa vapaasti: nimi, hinta, kuvaus, tagit.
-     tags: occasion[], style, color, size — käytetään suodatukseen. */
+     tags: occasion[], style, color, size, käytetään suodatukseen. */
   const products = [
     { id: "aamutuuli", name: "Aamutuuli", price: 49, img: IMG + "kimppu-01-pinkki.jpg",
-      desc: "Mimosaa, leijonankitaa ja malvaa — kevyt aamuinen kimppu paperiin käärittynä.",
+      desc: "Mimosaa, leijonankitaa ja malvaa, kevyt aamuinen kimppu paperiin käärittynä.",
       occasion: ["syntymapaivat", "valmistujaiset"], style: "luonnonlaheinen", color: "pastelli", size: "keskikokoinen" },
 
     { id: "leinikki", name: "Leinikki & Lempeys", price: 39, img: IMG + "kimppu-02-leinikki.jpg",
@@ -101,7 +101,7 @@ window.FLOREA = (function () {
       occasion: ["yritystapahtumat", "syntymapaivat"], style: "varikas", color: "monivarinen", size: "suuri" },
 
     { id: "eleganssi", name: "Eleganssi", price: 79, img: IMG + "kimppu-04-elegantti.jpg",
-      desc: "Hillityt pastellit ja korkeat varret — juhlava ja ajaton.",
+      desc: "Hillityt pastellit ja korkeat varret, juhlava ja ajaton.",
       occasion: ["haat"], style: "romanttinen", color: "pastelli", size: "suuri" },
 
     { id: "peltokukat", name: "Peltokukat", price: 35, img: IMG + "kimppu-05-peltokukat.jpg",
@@ -113,7 +113,7 @@ window.FLOREA = (function () {
       occasion: ["haat"], style: "romanttinen", color: "valkoinen", size: "suuri" },
 
     { id: "tulppaaniaalto", name: "Tulppaaniaalto", price: 29, img: IMG + "kimppu-07-tulppaani.jpg",
-      desc: "Pelkistetty tulppaanikimppu — selkeä ele, joka piristää arjen.",
+      desc: "Pelkistetty tulppaanikimppu, selkeä ele, joka piristää arjen.",
       occasion: ["syntymapaivat", "valmistujaiset"], style: "minimalistinen", color: "vaaleanpunainen", size: "pieni" },
 
     { id: "tropiikki", name: "Tropiikki", price: 69, img: IMG + "kimppu-08-tropiikki.jpg",
@@ -121,7 +121,7 @@ window.FLOREA = (function () {
       occasion: ["yritystapahtumat"], style: "varikas", color: "monivarinen", size: "suuri" },
 
     { id: "liljametsa", name: "Liljametsä", price: 65, img: IMG + "kimppu-09-lilja.jpg",
-      desc: "Tuoksuvia liljoja ja väririkkautta — runsas ja juhlava.",
+      desc: "Tuoksuvia liljoja ja väririkkautta, runsas ja juhlava.",
       occasion: ["valmistujaiset"], style: "varikas", color: "monivarinen", size: "keskikokoinen" },
 
     { id: "glacier-fennel", name: "Glacier & Fennel", price: 45, img: IMG + "kimppu-10-keltainen-sininen.jpg",
@@ -142,9 +142,9 @@ window.FLOREA = (function () {
   const services = [
     { num: "01", icon: GFX + "palvelu-viikonkimppu.svg", title: "Viikon kimppu", text: "Kauden parhaat varret paperiin käärittynä. Nouto ateljeesta tai pyörälähetillä keskustaan." },
     { num: "02", icon: GFX + "palvelu-haat.svg", title: "Häät & juhlat", text: "Morsiuskimput, kukkakaaret ja pöytäasetelmat. Suunnittelemme kokonaisuuden tunnelman mukaan." },
-    { num: "03", icon: GFX + "palvelu-yritys.svg", title: "Yritystilaisuudet", text: "Toistuvat toimistokukat ja tapahtumakoristelut sopimuksella — aina kauden mukaan." },
+    { num: "03", icon: GFX + "palvelu-yritys.svg", title: "Yritystilaisuudet", text: "Toistuvat toimistokukat ja tapahtumakoristelut sopimuksella, aina kauden mukaan." },
     { num: "04", icon: GFX + "palvelu-hautajaiset.svg", title: "Hautajaiset", text: "Surusidonnat ja muistamiset hienovaraisella kädellä, lyhyelläkin varoitusajalla." },
-    { num: "05", icon: GFX + "palvelu-juhlakoristelu.svg", title: "Juhlakoristelut", text: "Synttärit, valmistujaiset ja kausijuhlat — tilan kukitus avaimet käteen." },
+    { num: "05", icon: GFX + "palvelu-juhlakoristelu.svg", title: "Juhlakoristelut", text: "Synttärit, valmistujaiset ja kausijuhlat, tilan kukitus avaimet käteen." },
     { num: "06", icon: GFX + "palvelu-sidontakurssit.svg", title: "Sidontakurssit", text: "Pienryhmäworkshopit, joissa opit kokoamaan oman villikimpun." },
   ];
 
@@ -208,7 +208,7 @@ window.FLOREA = (function () {
   const testimonials = [
     { stars: 5, quote: "Kaunein kimppu, jonka olemme saaneet. Vieraat kyselivät, mistä se oli.", who: "Anni & Joonas, häät" },
     { stars: 5, quote: "Palvelu oli rauhallista ja henkilökohtaista. Lopputulos ylitti toiveemme.", who: "Maria, 50-vuotisjuhlat" },
-    { stars: 5, quote: "Juuri sellainen villi ja elävä asetelma kuin toivoin — ei yhtään geneerinen.", who: "Petri, perhejuhla" },
+    { stars: 5, quote: "Juuri sellainen villi ja elävä asetelma kuin toivoin, ei yhtään geneerinen.", who: "Petri, perhejuhla" },
     { stars: 5, quote: "Tilasin suruksi valkoisen kimpun. Hienovarainen ja kaunis, juuri oikea.", who: "Leena" },
     { stars: 5, quote: "Toimiston viikkokukat piristävät koko porukkaa. Aina kauden mukaan.", who: "Sofia, yritystilaus" },
   ];
@@ -219,8 +219,8 @@ window.FLOREA = (function () {
     teamImg: IMG + "referenssi-mies.jpg",
     storyTitle: "Kukkia, jotka kasvoivat villinä.",
     story: [
-      "Floréa syntyi halusta antaa villikukkien näyttää siltä, mitä ne ovat — epäsymmetrisiltä, elossa, hieman arvaamattomilta. Emme suorista vartta, joka haluaa kaartua.",
-      "Jokainen kimppu kootaan käsin kauden ehdoilla. Suosimme lähituottajien ja luomuviljelijöiden kukkia, ja käärimme ne kierrätyspaperiin — ei muovia.",
+      "Floréa syntyi halusta antaa villikukkien näyttää siltä, mitä ne ovat, epäsymmetrisiltä, elossa, hieman arvaamattomilta. Emme suorista vartta, joka haluaa kaartua.",
+      "Jokainen kimppu kootaan käsin kauden ehdoilla. Suosimme lähituottajien ja luomuviljelijöiden kukkia, ja käärimme ne kierrätyspaperiin, ei muovia.",
     ],
     values: [
       { title: "Kausi edellä", text: "Vain sitä, mitä juuri nyt kukkii." },

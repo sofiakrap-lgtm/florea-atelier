@@ -1,4 +1,4 @@
-# Floréa Atelier — assets
+# Floréa Atelier · assets
 
 Brändimateriaalit. Pidä kaikki visuaalit identiteetin sisällä (ks. juuren `CLAUDE.md`).
 
@@ -7,7 +7,7 @@ Brändimateriaalit. Pidä kaikki visuaalit identiteetin sisällä (ks. juuren `C
 |--------|---------|-----------|
 | `logos/` | Logot ja liikemerkit | `.svg` (ensisijainen) |
 | `graphics/` | Botaaniset viivaornamentit, kukkamotiivit, jakajat, ikonit | `.svg` |
-| `images/` | Valokuvat — kimput, ateljee, studio + katu | `.jpg` |
+| `images/` | Valokuvat, kimput, ateljee, studio + katu | `.jpg` |
 
 ## Nimeämiskäytäntö
 Pienet kirjaimet, väliviiva erottimena, kuvaava nimi:
@@ -27,7 +27,7 @@ Golden Fennel `#AFA857` · Glacier Mist `#AEC7E0`
 
 ## Vinkit
 - **SVG:** suosi `currentColor`-täyttöä, niin värin voi vaihtaa CSS:llä.
-- **JPG:** filmirae, luonnonvalo, paperikääre — ei lavastettua "stock"-tunnelmaa.
+- **JPG:** filmirae, luonnonvalo, paperikääre, ei lavastettua "stock"-tunnelmaa.
 - Liitä tiedostot suoraan oikeaan kansioon; `.gitkeep` pitää tyhjät kansiot mukana repossa.
 
 ## Käyttö sivulla
