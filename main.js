@@ -232,7 +232,12 @@
         h("span", { class: "muted" }, "Yhteensä"),
         h("span", { class: "price" }, eur(cartTotal())),
       ]),
-      h("a", { href: "tilaa.html", class: "btn btn--primary btn--block" }, "Siirry tilaukseen"),
+      h("a", { href: "tilaa.html", class: "btn btn--primary btn--block",
+        onclick: (e) => {
+          e.preventDefault();
+          alert("Tämä on demo. Oikeaa tilausta ei tehdä eikä maksua veloiteta.");
+          location.href = "tilaa.html";
+        } }, "Siirry tilaukseen"),
       h("p", { class: "form-note", style: "text-align:center;margin-top:10px" }, "Demo, maksua ei veloiteta."),
     );
   }
