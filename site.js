@@ -166,14 +166,14 @@ window.FLOREA = (function () {
 
   /* ---------- Kimpun rakentajan kukkalajit ---------- */
   const flowers = [
-    { id: "mimosa", name: "Mimosa", price: 6, img: IMG + "kimppu-01-pinkki.jpg" },
-    { id: "leinikki", name: "Leinikki", price: 7, img: IMG + "kimppu-02-leinikki.jpg" },
-    { id: "lilja", name: "Lilja", price: 8, img: IMG + "kimppu-09-lilja.jpg" },
-    { id: "tulppaani", name: "Tulppaani", price: 4, img: IMG + "kimppu-07-tulppaani.jpg" },
-    { id: "peltokukka", name: "Peltokukat", price: 5, img: IMG + "kimppu-05-peltokukat.jpg" },
-    { id: "ruusu", name: "Ruusu", price: 6, img: IMG + "kimppu-punainen.jpg" },
-    { id: "gladiolus", name: "Gladiolus", price: 7, img: IMG + "kimppu-04-elegantti.jpg" },
-    { id: "vihrea", name: "Viherustat", price: 3, img: IMG + "kimppu-11-varikas.jpg" },
+    { id: "mimosa", name: "Mimosa", price: 6, img: IMG + "mimosa.jpg" },
+    { id: "leinikki", name: "Leinikki", price: 7, img: IMG + "leinikki.jpg" },
+    { id: "lilja", name: "Lilja", price: 8, img: IMG + "lilja.jpg" },
+    { id: "tulppaani", name: "Tulppaani", price: 4, img: IMG + "tulppaani.jpg" },
+    { id: "peltokukka", name: "Peltokukat", price: 5, img: IMG + "pelto.jpg" },
+    { id: "ruusu", name: "Ruusu", price: 6, img: IMG + "ruusu.jpg" },
+    { id: "gladiolus", name: "Gladiolus", price: 7, img: IMG + "gladiolus.jpg" },
+    { id: "unikko", name: "Unikko", price: 5, img: IMG + "unikko.jpg" },
   ];
 
   /* ---------- Hintalaskurin parametrit ---------- */
