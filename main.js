@@ -60,9 +60,16 @@
       h("a", { href: n.href, class: n.href === here ? "active" : "" }, n.label)
     );
 
-    const linksWrap = h("div", { class: "nav-links", id: "navLinks" }, links);
+    const closeBtn = h("button", { class: "nav-close", "aria-label": "Sulje valikko", html: "✕" });
+    const linksWrap = h("div", { class: "nav-links", id: "navLinks" }, [closeBtn, ...links]);
+    const overlay = h("div", { class: "nav-overlay", id: "navOverlay" });
+    const closeMenu = () => { linksWrap.classList.remove("open"); overlay.classList.remove("open"); };
+    const openMenu = () => { linksWrap.classList.add("open"); overlay.classList.add("open"); };
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+    if (!$("#navOverlay")) document.body.appendChild(overlay);
     const toggle = h("button", { class: "nav-toggle", "aria-label": "Valikko", html: ICON.menu,
-      onclick: () => linksWrap.classList.toggle("open") });
+      onclick: () => (linksWrap.classList.contains("open") ? closeMenu() : openMenu()) });
     const cartBtn = h("button", { class: "cart-btn", "aria-label": "Ostoskori", html: ICON.cart + `<span class="cart-count" data-cart-count>0</span>`,
       onclick: openCart });
     const ctaBtn = h("a", { href: "tilaa.html", class: "btn btn--ghost btn--small nav-cta" }, "Tilaa kukkia");
@@ -266,6 +273,11 @@
     // suodatinpaneeli
     const panel = $("[data-filters]");
     if (panel) {
+      // Mobiili: "Suodata"-painike avaa/sulkee paneelin (piilossa desktopissa)
+      const filterToggle = h("button", { class: "btn btn--ghost btn--small filter-toggle", type: "button",
+        "aria-label": "Suodata", onclick: () => panel.classList.toggle("open") }, "Suodata");
+      panel.parentNode.insertBefore(filterToggle, panel);
+
       Object.entries(F.filters).forEach(([key, group]) => {
         const opts = group.options.map((o) =>
           h("label", { class: "filter-option" }, [
@@ -577,6 +589,8 @@
     { img: "assets/images/kimppu-05-peltokukat.jpg", cap: "Peltokukat" },
     { img: "assets/images/kimppu-09-lilja.jpg", cap: "Liljametsä" },
     { img: "assets/images/kimppu-11-varikas.jpg", cap: "Villi Niitty" },
+    { img: "assets/images/kimppu-01-pinkki.jpg", cap: "Aamutuuli" },
+    { img: "assets/images/kimppu-punainen.jpg", cap: "Punainen Hetki" },
   ];
   function initGallery() {
     const wrap = $("[data-gallery]");
