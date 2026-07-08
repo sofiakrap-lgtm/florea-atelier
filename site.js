@@ -24,7 +24,7 @@ window.FLOREA = (function () {
     hours: [
       { d: "Ma–Pe", h: "10–18" },
       { d: "La", h: "10–16" },
-      { d: "Su", h: "Suljettu (verkkotilaukset 24/7)" },
+      { d: "Su", h: "Suljettu" },
     ],
     social: { instagram: "#", facebook: "#", uutiskirje: "#" },
   };
