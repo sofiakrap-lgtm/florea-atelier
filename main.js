@@ -136,6 +136,29 @@
   function renderFlowers() {
     $$("[data-flower]").forEach((el) => { el.innerHTML = BRAND_FLOWER; });
   }
+
+  /* Brändin mukainen keskitetty ponnahdusikkuna (korvaa selaimen alert) */
+  function showModal(message, opts = {}) {
+    const btn = h("button", { class: "btn btn--primary btn--small", type: "button" }, opts.btn || "Selvä");
+    const card = h("div", { class: "modal-card", role: "dialog", "aria-modal": "true" }, [
+      h("span", { class: "modal-flower", html: BRAND_FLOWER }),
+      h("p", {}, message),
+      btn,
+    ]);
+    const overlay = h("div", { class: "modal-overlay" }, [card]);
+    const close = () => {
+      overlay.classList.remove("open");
+      setTimeout(() => overlay.remove(), 260);
+      document.removeEventListener("keydown", onKey);
+    };
+    function onKey(e) { if (e.key === "Escape") close(); }
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+    btn.addEventListener("click", () => { close(); if (opts.onClose) opts.onClose(); });
+    document.addEventListener("keydown", onKey);
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => { overlay.classList.add("open"); btn.focus(); });
+    return close;
+  }
   /* rullaava brändinauha: <div data-marquee></div> */
   function renderMarquee() {
     $$("[data-marquee]").forEach((m) => {
@@ -235,8 +258,10 @@
       h("a", { href: "tilaa.html", class: "btn btn--primary btn--block",
         onclick: (e) => {
           e.preventDefault();
-          alert("Tämä on demo. Oikeaa tilausta ei tehdä eikä maksua veloiteta.");
-          location.href = "tilaa.html";
+          showModal("Tämä on demo. Oikeaa tilausta ei tehdä eikä maksua veloiteta.", {
+            btn: "Jatka tilaukseen",
+            onClose: () => { location.href = "tilaa.html"; },
+          });
         } }, "Siirry tilaukseen"),
       h("p", { class: "form-note", style: "text-align:center;margin-top:10px" }, "Demo, maksua ei veloiteta."),
     );
@@ -496,7 +521,7 @@
         h("span", { class: "muted" }, "Yhteensä"), h("span", { class: "price" }, eur(total))]));
       summaryBody.appendChild(h("button", { class: "btn btn--primary btn--block", style: "margin-top:16px",
         disabled: chosen.length ? null : "disabled",
-        onclick: () => { alert(`Kiitos! Oma kimppusi (${chosen.map((c) => c.name).join(", ")}), ${eur(total)}. Demo: tilausta ei lähetetty.`); }
+        onclick: () => { showModal(`Kiitos! Oma kimppusi (${chosen.map((c) => c.name).join(", ")}), ${eur(total)}. Demo: tilausta ei lähetetty.`); }
       }, "Tilaa oma kimppu"));
     }
     renderSummary();
